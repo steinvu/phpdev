@@ -1,57 +1,52 @@
-<?php
+<!DOCTYPE html>	<!-- In HTML5 there is only one doctype-->
 
-echo "php application<br/>";
+<html>
+	<head>
+		<meta charset="UTF-8">	<!--the charset attribute specifies the character encoding for the HTML document-->
+		<script type="text/javascript" src="handleinput.js"></script> <!--type : The older HTML4 standard required this attribute to be set, but HTML5 allows it to be absent-->
+	</head>
+	
+	<body onload="load()">
 
-require_once('./classes/first.class.php');
+		<input id="txtsearch" type="text" onkeyup="getData(this.value)" placeholder="Search text">
+		<input id="txtsearch" type="text" onkeyup="getDbData(this.value)" placeholder="Search DB for lastname">
+		<br><br>
 
-$firstobject = new first;
+		<div id="userdata">
+			<b>Person info will be listed here...</b>
+		</div>
+		
+		<div>	<?php
+					echo "php application<br/>";
 
-/*
-session_status returns the status of the current session. 
-This function can return three different integer values, all of which are available as predefined constants. These are:
-0 – PHP_SESSION_DISABLED: Sessions are currently disabled.
-1 – PHP_SESSION_NONE: Sessions are enabled, but no session has been started.
-2 – PHP_SESSION_ACTIVE: Sessions are enabled and a session has been started.
-If we were to use session_status, our code would look like this:
-*/
-print_r($_SESSION);
-print_r(session_status());
+					require_once('./classes/first.class.php');
 
-if(session_status() == PHP_SESSION_NONE){     //session has not started
-    session_start();
-	//$_SESSION['session_start'] = date('Y-m-d H:i:s', $_SERVER['REQUEST_TIME']);
-		$_SESSION['session_start'] = date('Y-m-d H:i:s', time());
-print_r($_SERVER);
-	//start session
-	//putting an @ before a function call suppresses any errors that may be reported during the course of that function.
-	//@session_start();
-}
+					$firstobject = new first;
 
-/*
-PHP superglobals
-print_r($GLOBALS);echo "<br/><br/><br/><br/>";
-print_r($_SERVER);echo "<br/><br/><br/><br/>";
-print_r($_GET);echo "<br/><br/><br/><br/>";
-print_r($_POST);echo "<br/><br/><br/><br/>";
-print_r($_FILES);echo "<br/><br/><br/><br/>";
-print_r($_COOKIE);echo "<br/><br/><br/><br/>";
-print_r($_SESSION);echo "<br/><br/><br/><br/>";
-print_r($_REQUEST);echo "<br/><br/><br/><br/>";
-print_r($_ENV);echo "<br/><br/><br/><br/>";
-*/
+					/*
+					session_status returns the status of the current session. 
+					This function can return three different integer values, all of which are available as predefined constants. These are:
+					0 – PHP_SESSION_DISABLED: Sessions are currently disabled.
+					1 – PHP_SESSION_NONE: Sessions are enabled, but no session has been started.
+					2 – PHP_SESSION_ACTIVE: Sessions are enabled and a session has been started.
+					If we were to use session_status, our code would look like this:
+					*/
+					
+					
+					//print_r($_SESSION);
+					//print_r(session_status());
 
-print_r($_SESSION);
-print_r(session_status());
+					if(session_status() == PHP_SESSION_NONE){     //session has not started
+						session_start();
+						//$_SESSION['session_start'] = date('Y-m-d H:i:s', $_SERVER['REQUEST_TIME']);
+							$_SESSION['session_start'] = date('Y-m-d H:i:s', time());
+					//print_r($_SERVER);
+						//start session
+						//putting an @ before a function call suppresses any errors that may be reported during the course of that function.
+						//@session_start();
+					}
+				?>
+		</div>
 
-
-/*
-
-// remove all session variables
-	session_unset(); 
-
-// destroy the session 
-	session_destroy(); 
-
-*/
-
-?>
+	</body>
+</html>

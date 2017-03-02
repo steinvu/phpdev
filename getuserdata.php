@@ -64,7 +64,8 @@ if ($result->num_rows > 0) {
 			$returnval = $returnval . $value . "<br/>";
 			
 		}
-		return utf8_encode($returnval);
+		//return utf8_encode($returnval);
+		return $returnval;
 	} else {
 		return "0 results";
 

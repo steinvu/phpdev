@@ -2,17 +2,15 @@
 
 If (isset($_GET["q"])){			//check if input value exists and place it in variable
 	$searchstring = $_GET["q"];
+	
+	switch($searchstring){
+		case "test": echo "case TEST!";
+					 break;
+		case "brol": echo "case BROL!";
+					 break;
+		default: break;
+	}
 }
-
-if ($searchstring == "test"){				//if input value equals "test" )> echo detected
-	echo "Value 'test' detected!";
-}
-
-if ($searchstring == "brol"){				//if input value equals "brol" )> echo detected
-	echo "Value 'brol' detected!";
-}
-
-
 
 
 
@@ -31,20 +29,15 @@ function getQueryResult($val){
 	$password = "root";
 	$dbname = "phpdb";
 	
-	// Create connection
 	$conn = new mysqli($servername, $username, $password);
-
-	//select database
 	$conn->select_db($dbname);
 	
-	// Check connection
 	if ($conn->connect_error) {
 		die("Connection failed: " . $conn->connect_error);
 	} 
-	//echo "Connected successfully";
 
 	$sql = "SELECT id, firstname, lastname FROM tbl_person where lastname like '%". $val ."%'";
-	//return $sql;
+
 	$result = $conn->query($sql);
 	
 	return $result;
@@ -55,17 +48,17 @@ function getQueryResult($val){
 
 function handleResult($result){
 
-$returnval="";
+//$returnval="";
 
-if ($result->num_rows > 0) {
+	if ($result->num_rows > 0) {
 		// output data of each row
 		while($row = $result->fetch_assoc()) {
-			$value = "id: " . $row["id"]. " - Name: " . $row["firstname"]. " " . $row["lastname"]. "<br>";
+			$value = "ID: " . $row["id"]. " - Name: " . $row["firstname"]. " " . $row["lastname"]. "<br>";
 			$returnval = $returnval . $value . "<br/>";
 			
 		}
-		//return utf8_encode($returnval);
-		return $returnval;
+		return utf8_encode($returnval);
+		//return $returnval;
 	} else {
 		return "0 results";
 

@@ -1,0 +1,16 @@
+body {
+    background-color: lightblue;
+}
+
+div{
+    color: navy;
+    margin-left: 20px;
+}
+
+.customtxt{			/* class */
+	color: red;
+}
+
+#special1{			/* id */
+	color: yellow;
+}

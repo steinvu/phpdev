@@ -8,24 +8,52 @@
 	</head>
 	
 	<body onload="load()">
-
-		<input id="txtsearch" type="text" onkeyup="getData(this.value)" placeholder="Search text">
-		<input id="txtsearch" type="text" onkeyup="getDbData(this.value)" placeholder="Search DB for lastname">
+	
+		<h1 class="mailtitle">AJAX test site</h1>
+		
+		Zoek tekst:
+		<p class="indent">
+			<input id="txtsearch" type="text" onkeyup="getData(this.value)" placeholder="Search text">
+		</p>
+		Zoek in Database:
+		<p class="indent">
+			<input id="txtsearchdb" type="text" onkeyup="getDbData(this.value)" placeholder="Search DB for lastname">
+		</p>
+		
 		<br><br>
 
-		<div id="userdata">
-			<b>Person info will be listed here...</b>
+		<div id="txtsearchresult" class="response" >
+			Info will be listed here...
+		</div>
+		<div id="txtdbsearchresult" class="response">
+			DB info will be listed here...
+		</div>
+
+		
+		
+		<h1 id="special1">Selecteer uit keuzelijst:</h1>
+		
+		<p class="customtxt">Voorbeeld paragraaf</p>
+		
+		
+		<form>
+			<select id="userlist" onchange="showUser(this.value)">
+				<option value="">Select a person:</option>
+				<option value="1">Peter Griffin</option>
+				<option value="2">Lois Griffin</option>
+				<option value="3">Joseph Swanson</option>
+				<option value="4">Glenn Quagmire</option>
+			</select>
+		</form>
+		
+		<div id="txtselectionresult" class="response">
+			Selection info will be listed here...
 		</div>
 		
-		<h1 class="customtxt">custom txt field</h1>
-		
-		<h2 id="special1">special txt field</h1>
-		
-		<p class="customtxt">Dit is wat random tekst</p>
-		
-		<div>	<?php
+		<div>	
+				<?php
 	
-					echo "php application<br/>";
+					//echo "php application<br/>";
 
 					
 					/*

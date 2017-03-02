@@ -13,6 +13,22 @@ If (isset($_GET["q"])){			//check if input value exists and place it in variable
 }
 
 
+If (isset($_GET["selection"])){			//check if input value exists and place it in variable
+	$searchstring = $_GET["selection"];
+	
+	switch($searchstring){
+		case "1": echo "eerste in lijst";
+					 break;
+		case "2": echo "tweede in lijst";
+					 break;
+		case "3": echo "derde in lijst";
+					 break;
+		case "4": echo "vierde in lijst";
+					 break;
+		default: break;
+	}
+}
+
 
 
 If (isset($_GET["qdb"])){			//check if input value exists and place it in variable

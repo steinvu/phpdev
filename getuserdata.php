@@ -30,6 +30,21 @@ If (isset($_GET["selection"])){			//check if input value exists and place it in 
 }
 
 
+If (isset($_GET["drp"])){			//check if input value exists and place it in variable
+	$searchstring = $_GET["drp"];
+	
+	switch($searchstring){
+		case "fill": echo "<option value='1'>Peter Griffin</option>
+							<option value='2'>Lois Griffin</option><option value='3'>Get from DB!</option><option value='4'>GET MORE...!</option>
+							";
+					 break;	
+		case "clear": echo "";
+					 break;
+		default: break;
+	}
+}
+
+
 
 If (isset($_GET["qdb"])){			//check if input value exists and place it in variable
 	$searchdbstring = $_GET["qdb"];

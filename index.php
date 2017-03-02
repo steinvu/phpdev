@@ -7,7 +7,7 @@
 		<script type="text/javascript" src="handleinput.js"></script> <!--type : The older HTML4 standard required this attribute to be set, but HTML5 allows it to be absent-->
 	</head>
 	
-	<body onload="load()">
+	<body onload="populatedropdown('fill')">
 	
 		<h1 class="mailtitle">AJAX test site</h1>
 		
@@ -25,17 +25,16 @@
 		<div id="txtsearchresult" class="response" >
 			Info will be listed here...
 		</div>
+		
 		<div id="txtdbsearchresult" class="response">
 			DB info will be listed here...
 		</div>
 
 		
 		
-		<h1 id="special1">Selecteer uit keuzelijst:</h1>
+		<h1 id="special1">Select from dropdowns:</h1>
 		
-		<p class="customtxt">Voorbeeld paragraaf</p>
-		
-		
+		<p class="customtxt">Predefined list:</p>
 		<form>
 			<select id="userlist" onchange="showUser(this.value)">
 				<option value="">Select a person:</option>
@@ -49,6 +48,23 @@
 		<div id="txtselectionresult" class="response">
 			Selection info will be listed here...
 		</div>
+		
+		<br/><br/><br/><br/>
+		
+		<p class="customtxt">DB list:</p>
+		<form>
+			<select id="dbuserlist" onchange="showUserDetail(this.value)">	
+			</select>
+		</form>
+		
+		<div id="txtselectionresult" class="response">
+			Selection info will be listed here...
+		</div>		
+		
+
+		
+		
+		
 		
 		<div>	
 				<?php

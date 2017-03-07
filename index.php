@@ -7,7 +7,7 @@
 		<script type="text/javascript" src="handleinput.js"></script> <!--type : The older HTML4 standard required this attribute to be set, but HTML5 allows it to be absent-->
 	</head>
 	
-	<body onload="populatedropdown('fill')">
+	<body onload="populatedropdown('filldb')">
 	
 		<h1 class="mailtitle">AJAX test site</h1>
 		

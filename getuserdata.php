@@ -33,11 +33,41 @@ If (isset($_GET["selection"])){			//check if input value exists and place it in 
 If (isset($_GET["drp"])){			//check if input value exists and place it in variable
 	$searchstring = $_GET["drp"];
 	
-	switch($searchstring){
+	switch($searchstring){			//to build from query
 		case "fill": echo "<option value='1'>Peter Griffin</option>
-							<option value='2'>Lois Griffin</option><option value='3'>Get from DB!</option><option value='4'>GET MORE...!</option>
+							<option value='2'>Lois Griffin</option>
+							<option value='3'>Get from DB!</option>
+							<option value='4'>GET MORE...!</option>
 							";
 					 break;	
+			 
+		case "filldb": 	
+						$servername = "localhost";
+						$username = "root";
+						$password = "root";
+						$dbname = "phpdb";
+	
+						$conn = new mysqli($servername, $username, $password);
+						$conn->select_db($dbname);
+						
+						if ($conn->connect_error) {
+							die("Connection failed: " . $conn->connect_error);
+						} 
+
+						$sql = "SELECT id,firstname, lastname FROM tbl_person;";
+
+						$result = $conn->query($sql);
+
+						echo "<select name=listfromdb value=''>DB name list</option>"; // list box select command
+
+						foreach ($conn->query($sql) as $row){//Array or records stored in $row
+							echo "<option value=$row[id]>" . utf8_encode($row[firstname]) . " " . utf8_encode($row[lastname]) . "</option>"; 
+							/* Option values are added by looping through the array */ 
+						}
+						echo "</select>";// Closing of list box
+
+						break;
+		
 		case "clear": echo "";
 					 break;
 		default: break;
